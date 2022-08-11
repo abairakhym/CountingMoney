@@ -1,4 +1,4 @@
-package com.example.countingmoney
+package com.example.countingmoney.utils.binding
 
 import android.os.Bundle
 import android.view.LayoutInflater
