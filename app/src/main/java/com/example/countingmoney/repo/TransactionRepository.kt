@@ -3,7 +3,7 @@ package com.example.countingmoney.repo
 import com.example.countingmoney.db.AppDatabase
 import com.example.countingmoney.model.Transaction
 
-class TransactionRepository(private val db: AppDatabase) {
+class TransactionRepository(val db: AppDatabase) {
     //insert transaction
     suspend fun insert(transaction: Transaction) = db.transactionDao().insertTransaction(transaction)
 
@@ -14,8 +14,8 @@ class TransactionRepository(private val db: AppDatabase) {
     suspend fun delete(transaction: Transaction) = db.transactionDao().deleteTransaction(transaction)
 
     //get all transaction
-    suspend fun getAllTransaction() = db.transactionDao().getAllTransaction()
+    fun getAllTransaction() = db.transactionDao().getAllTransaction()
 
     //get single transaction type - expense or income
-    suspend fun getAllSingleTransaction(transactionType: String) = db.transactionDao().getAllSingleTransaction(transactionType)
+    fun getAllSingleTransaction(transactionType: String) = db.transactionDao().getAllSingleTransaction(transactionType)
 }
