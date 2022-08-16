@@ -48,6 +48,7 @@ class TransactionsAdapter  : RecyclerView.Adapter<TransactionsAdapter.OperationV
             binding.apply {
                 tvTitle.text = transaction.title
                 tvMoney.text = transaction.amount.toString()
+                transaction.image?.let { ivTransaction.setImageResource(it) }
             }
         }
     }

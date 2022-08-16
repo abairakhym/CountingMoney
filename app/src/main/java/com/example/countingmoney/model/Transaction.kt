@@ -1,5 +1,6 @@
 package com.example.countingmoney.model
 
+import android.media.Image
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -8,6 +9,7 @@ data class Transaction(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
     val title: String,
+    var image: Int? = null,
     val amount: Double,
     val transaction_type: String,
     val category: String,

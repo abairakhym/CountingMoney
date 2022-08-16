@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.example.countingmoney.MainActivity
+import com.example.countingmoney.R
 import com.example.countingmoney.databinding.FragmentAddTransactionBinding
 import com.example.countingmoney.model.Transaction
 import com.example.countingmoney.utils.binding.BindingFragment
@@ -26,7 +27,22 @@ class AddTransactionFragment : BindingFragment<FragmentAddTransactionBinding>(
             btnAddTransaction.setOnClickListener {
                 //add dato to db
                 if(etAmount.text != null && etTitle.text != null && etDescription.text != null && spnTag.selectedItem != null && spnTransactionType.selectedItem != null) {
-                    var transaction = Transaction(amount = etAmount.text.toString().toDouble(), title = etTitle.text.toString(), description = etDescription.text.toString(), transaction_type = spnTransactionType.selectedItem.toString(), category = spnTag.selectedItem.toString(), time = "husdak")
+                    val transaction = Transaction(amount = etAmount.text.toString().toDouble(),
+                        title = etTitle.text.toString(),
+                        description = etDescription.text.toString(),
+                        transaction_type = spnTransactionType.selectedItem.toString(),
+                        category = spnTag.selectedItem.toString(),
+                        time = "husdak")
+
+                    when (transaction.category) {
+                        "Entertaiment" -> {transaction.image = R.drawable.entertaiment}
+                        "Transportation" -> {transaction.image = R.drawable.transportation}
+                        "Cafe" -> {transaction.image = R.drawable.cafe}
+                        "Groceries" -> {transaction.image = R.drawable.groceries}
+                        "Workout" -> {transaction.image = R.drawable.workout}
+                        "Investments" -> {transaction.image = R.drawable.investing}
+                        "Other" -> {transaction.image = R.drawable.other}
+                    }
                     viewModel.insertTransaction(transaction)
                     Log.d("TA",transaction.toString())
                     findNavController().navigateUp()
