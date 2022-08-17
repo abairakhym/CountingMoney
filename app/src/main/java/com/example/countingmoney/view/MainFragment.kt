@@ -12,6 +12,7 @@ import com.example.countingmoney.MainActivity
 import com.example.countingmoney.R
 import com.example.countingmoney.adapters.TransactionsAdapter
 import com.example.countingmoney.databinding.FragmentMainBinding
+import com.example.countingmoney.utils.Constants
 import com.example.countingmoney.utils.binding.BindingFragment
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
@@ -31,12 +32,8 @@ class MainFragment : BindingFragment<FragmentMainBinding>(
         val pieChart = binding.pieChart
         viewModel = (activity as MainActivity).viewModel
         setupListeners()
-       // val df = viewModel.getAllTransaction().observe(viewLifecycleOwner, Observer { transaction ->
-       //     //newsAdapter.differ.submitList(articles)
-       //     Log.d("Mars", "да епта$transaction")
-       // })
         viewModel.getAllSingleTransaction("Expenses").observe(viewLifecycleOwner, Observer { transaction ->
-            Log.d("Mars", "onViewCreated: $transaction")
+            //Log.d("Mars", "onViewCreated: $transaction")
             transactionAdapter?.differ?.submitList(transaction)
         })
 
@@ -121,21 +118,27 @@ class MainFragment : BindingFragment<FragmentMainBinding>(
 
         // loading chart
         pieChart.invalidate()
-
-
     }
 
     private fun setupListeners() {
+        transactionAdapter = TransactionsAdapter()
         binding.apply {
             fabAddTransaction.setOnClickListener {
                 findNavController().navigate(R.id.action_mainFragment_to_addTransactionFragment)
             }
-
+            rvTransaction.apply {
+                adapter = transactionAdapter
+                layoutManager = LinearLayoutManager(activity)
+            }
         }
-        transactionAdapter = TransactionsAdapter()
-        binding.transactionRv.rvTransactions.apply {
-            adapter = transactionAdapter
-            layoutManager = LinearLayoutManager(activity)
+        transactionAdapter?.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable(Constants.KEY_WORD, it)
+            }
+            findNavController().navigate(
+                R.id.action_mainFragment_to_transactionDetailFragment,
+                bundle
+            )
         }
     }
 

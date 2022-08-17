@@ -1,8 +1,8 @@
 package com.example.countingmoney.model
 
-import android.media.Image
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "transactions")
 data class Transaction(
@@ -14,4 +14,5 @@ data class Transaction(
     val transaction_type: String,
     val category: String,
     val time: String,
-    val description: String)
+    val description: String
+    ) : Serializable

@@ -9,6 +9,10 @@
     <string name="title">Title</string>
     <string name="amount">Amount</string>
     <string name="add_transaction">Add Transaction</string>
+    <string name="edit">Edit</string>
+    <string name="transaction_type_detail">Transaction type</string>
+    <string name="category">Category</string>
+    <string name="when">When</string>
     <string-array name="transaction_type">
         <item>Expenses</item>
         <item>Income</item>

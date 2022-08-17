@@ -11,4 +11,5 @@
     <color name="red">#F44336</color>
     <color name="snow">#F9F9F9</color>
     <color name="blue">#006AF6</color>
+    <color name="hint_text">#828282</color>
 </resources>

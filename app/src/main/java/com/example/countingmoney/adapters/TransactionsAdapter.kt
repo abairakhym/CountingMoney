@@ -1,5 +1,6 @@
 package com.example.countingmoney.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.example.countingmoney.model.Transaction
 
 class TransactionsAdapter  : RecyclerView.Adapter<TransactionsAdapter.OperationViewHolder>() {
 
-    //private var mListener: ((onItemClickListener) -> Unit)? = null  //click listener
+    private var onItemClickListener: ((Transaction) -> Unit)? = null  //click listener
 
     private val differCallback = object : DiffUtil.ItemCallback<Transaction>() {
         override fun areItemsTheSame(oldItem: Transaction, newItem: Transaction): Boolean {
@@ -22,7 +23,6 @@ class TransactionsAdapter  : RecyclerView.Adapter<TransactionsAdapter.OperationV
             return oldItem == newItem
         }
     }
-
     val differ = AsyncListDiffer(this,differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OperationViewHolder {
@@ -31,16 +31,21 @@ class TransactionsAdapter  : RecyclerView.Adapter<TransactionsAdapter.OperationV
     }
 
     override fun onBindViewHolder(holder: OperationViewHolder, position: Int) {
-        holder.bind(differ.currentList.get(position))
+        holder.apply {
+            bind(differ.currentList.get(position))
+            itemView.setOnClickListener {
+                onItemClickListener?.let { it(differ.currentList.get(position)) }
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
 
-   //fun setOnItemClickListener(listener: (Transaction) -> Unit) {
-   //    onItemClickListener = listener
-   //}
+   fun setOnItemClickListener(listener: (Transaction) -> Unit) {
+       onItemClickListener = listener
+   }
 
     inner class OperationViewHolder (item: View) : RecyclerView.ViewHolder(item) {
         val binding = TransactionItemBinding.bind(item)
@@ -48,6 +53,7 @@ class TransactionsAdapter  : RecyclerView.Adapter<TransactionsAdapter.OperationV
             binding.apply {
                 tvTitle.text = transaction.title
                 tvMoney.text = transaction.amount.toString()
+                tvCategory.text = transaction.category
                 transaction.image?.let { ivTransaction.setImageResource(it) }
             }
         }
