@@ -9,9 +9,7 @@ import com.example.countingmoney.view.TransactionViewModel
 import com.example.countingmoney.view.TransactionsViewModelProviderFactory
 
 class MainActivity : AppCompatActivity() {
-
     lateinit var viewModel: TransactionViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

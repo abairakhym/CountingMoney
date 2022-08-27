@@ -1,7 +1,6 @@
 package com.example.countingmoney.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.example.countingmoney.MainActivity
@@ -44,7 +43,12 @@ class AddTransactionFragment : BindingFragment<FragmentAddTransactionBinding>(
                         "Other" -> {transaction.image = R.drawable.other}
                     }
                     viewModel.insertTransaction(transaction)
-                    Log.d("TA",transaction.toString())
+                    findNavController().navigateUp()
+                }
+            }
+            toolbar.apply {
+                tvTbTitle.text = "Add Transaction"
+                ibTbBack.setOnClickListener {
                     findNavController().navigateUp()
                 }
             }

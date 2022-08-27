@@ -10,91 +10,97 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/et_amount"
-        android:layout_width="344dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/snow"
-        android:ems="11"
-        android:hint="@string/amount"
-        android:inputType="number"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_title" />
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/include_toolbar_back_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/et_title"
-        android:layout_width="344dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="27dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/title"
-        android:textAlignment="center"
-        android:backgroundTint="@color/snow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/et_amount"
+            android:layout_width="344dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/snow"
+            android:ems="11"
+            android:hint="@string/amount"
+            android:inputType="number"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
-    <Spinner
-        android:id="@+id/spn_transaction_type"
-        android:layout_width="344dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/snow"
-        android:entries="@array/transaction_type"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_amount" />
+        <EditText
+            android:id="@+id/et_title"
+            android:layout_width="344dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="27dp"
+            android:backgroundTint="@color/snow"
+            android:ems="10"
+            android:hint="@string/title"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <Spinner
-        android:id="@+id/spn_tag"
-        android:layout_width="344dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/snow"
-        android:entries="@array/categories"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spn_transaction_type" />
+        <Spinner
+            android:id="@+id/spn_transaction_type"
+            android:layout_width="344dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/snow"
+            android:entries="@array/transaction_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_amount" />
 
-    <Button
-        android:id="@+id/btn_edit_date"
-        android:layout_width="344dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/snow"
-        android:drawableEnd="@drawable/icon_calendar"
-        android:hint="@string/date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spn_tag" />
+        <Spinner
+            android:id="@+id/spn_tag"
+            android:layout_width="344dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/snow"
+            android:entries="@array/categories"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spn_transaction_type" />
 
-    <EditText
-        android:id="@+id/et_description"
-        android:layout_width="344dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/snow"
-        android:ems="10"
-        android:hint="@string/note"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_edit_date" />
+        <Button
+            android:id="@+id/btn_edit_date"
+            android:layout_width="344dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/snow"
+            android:drawableEnd="@drawable/icon_calendar"
+            android:hint="@string/date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spn_tag" />
 
-    <Button
-        android:id="@+id/btn_edit_transaction"
-        android:layout_width="344dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="40dp"
-        android:text="@string/add_transaction"
-        android:backgroundTint="@color/blue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <EditText
+            android:id="@+id/et_description"
+            android:layout_width="344dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/snow"
+            android:ems="10"
+            android:hint="@string/note"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_edit_date" />
+
+        <Button
+            android:id="@+id/btn_edit_transaction"
+            android:layout_width="344dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="40dp"
+            android:text="@string/add_transaction"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

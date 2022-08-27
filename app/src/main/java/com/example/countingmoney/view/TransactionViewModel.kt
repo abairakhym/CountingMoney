@@ -20,10 +20,7 @@ class TransactionViewModel(private val transactionRepository: TransactionReposit
     fun deleteTransaction(transaction: Transaction) = viewModelScope.launch(Dispatchers.IO) {
         transactionRepository.delete(transaction)
     }
-
     fun getAllTransaction() = transactionRepository.getAllTransaction()
-
     //get single transaction type - expense or income
     fun getAllSingleTransaction(transactionType: String) = transactionRepository.getAllSingleTransaction(transactionType)
-
 }

@@ -10,6 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/include_toolbar_back_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <EditText
             android:id="@+id/et_amount"
             android:layout_width="344dp"
@@ -29,14 +35,14 @@
             android:layout_width="344dp"
             android:layout_height="60dp"
             android:layout_marginTop="27dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="@string/title"
-            android:textAlignment="center"
             android:backgroundTint="@color/snow"
+            android:ems="10"
+            android:hint="@string/title"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <Spinner
             android:id="@+id/spn_transaction_type"
@@ -96,7 +102,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

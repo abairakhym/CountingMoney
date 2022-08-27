@@ -9,8 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
 open class BindingFragment <B : ViewBinding> constructor(
-private val inflate: (inflater: LayoutInflater, container: ViewGroup?, b: Boolean) -> B?
-) : Fragment() {
+    private val inflate: (inflater: LayoutInflater, container: ViewGroup?, b: Boolean) -> B?) : Fragment() {
 
     private var _binding: B? = null
     protected val binding get() = _binding!!

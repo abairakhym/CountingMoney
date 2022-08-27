@@ -3,6 +3,7 @@ package com.example.countingmoney.view
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
+import com.example.countingmoney.MainActivity
 import com.example.countingmoney.R
 import com.example.countingmoney.databinding.FragmentTransactionDetailBinding
 import com.example.countingmoney.model.Transaction
@@ -11,9 +12,10 @@ import com.example.countingmoney.utils.binding.BindingFragment
 
 class TransactionDetailFragment : BindingFragment<FragmentTransactionDetailBinding>(
     FragmentTransactionDetailBinding::inflate) {
-
+    lateinit var viewModel: TransactionViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = (activity as MainActivity).viewModel
         val transaction: Transaction = arguments?.get(Constants.KEY_WORD) as Transaction
         binding.apply {
             tvTitleDetail.text = transaction.title
@@ -27,6 +29,16 @@ class TransactionDetailFragment : BindingFragment<FragmentTransactionDetailBindi
             }
             btnEditDetail.setOnClickListener {
                 findNavController().navigate(R.id.action_transactionDetailFragment_to_editTransactionFragment, bundle)
+            }
+            toolbar.apply {
+                tvTbTitle.text = "Details"
+                ibTbDelete.setOnClickListener {
+                    viewModel.deleteTransaction(transaction)
+                    findNavController().navigateUp()
+                }
+                ibTbBack.setOnClickListener {
+                    findNavController().navigateUp()
+                }
             }
         }
     }

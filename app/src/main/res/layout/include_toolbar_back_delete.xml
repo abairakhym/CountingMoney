@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="?attr/colorPrimary"
+    android:backgroundTint="@color/white"
+    android:minHeight="?attr/actionBarSize"
+    android:theme="?attr/actionBarTheme">
+
+    <TextView
+        android:id="@+id/tv_tb_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Main"
+        style="@style/toolbar"
+        android:layout_gravity="center" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/ib_tb_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="20dp"
+        android:background="@color/white"
+        android:src="@drawable/back" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/ib_tb_delete"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:src="@drawable/delete"/>
+</androidx.appcompat.widget.Toolbar>

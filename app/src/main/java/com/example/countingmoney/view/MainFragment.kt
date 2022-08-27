@@ -3,7 +3,6 @@ package com.example.countingmoney.view
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -23,10 +22,8 @@ import com.github.mikephil.charting.utils.MPPointF
 
 class MainFragment : BindingFragment<FragmentMainBinding>(
     FragmentMainBinding::inflate) {
-
     lateinit var viewModel: TransactionViewModel
     private var transactionAdapter: TransactionsAdapter? = null
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val pieChart = binding.pieChart
@@ -141,5 +138,4 @@ class MainFragment : BindingFragment<FragmentMainBinding>(
             )
         }
     }
-
 }
